@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <!--sample-->
+
+    <body>
+        <div class="container">
+        <div class="calculator">
+        <input type="text" placeholder="0" id="result"/>
+        <button onclick="clear()">CL</button>
+        <button onclick="del()">DEL</button>
+        <button onclick="display('%')">%</button>
+        <button onclick="display('/')">/</button>
+        <button onclick="display('7')">7</button>
+        <button onclick="display('8')">8</button>
+        <button onclick="display('9')">9</button>
+        <button onclick="display('*')">*</button>
+        <button onclick="display('6')">6</button>
+        <button onclick="display('5')">5</button>
+        <button onclick="display('4')">4</button>
+        <button onclick="display('-')">-</button>
+        <button onclick="display('3')">3</button>
+        <button onclick="display('2')">2</button>
+        <button onclick="display('1')">1</button>
+        <button onclick="display('+')">+</button>
+        <button onclick="display('.')">.</button>
+        <button onclick="display('0')">0</button>
+        <button onclick="calculate()">=</button>
+    </div>
+    </div>
+    <!-- <script src="./script.js"></script> -->
+    <script>
+        let resultElement = document.getElementById('result');
+        let currentExpression = '';
+    
+        function display(number) {
+          currentExpression += number;
+          resultElement.value = currentExpression;
+        }
+    
+        // function appendOperator(operator) {
+        //   currentExpression += operator;
+        //   resultElement.value = currentExpression;
+        // }
+    
+        function reset() {
+          console.log("reset");
+          currentExpression = '';
+          resultElement.value = '';
+         
+        }
+        function del(){
+            resultElement.value = resultElement.value.slice(0,-1);
+        }
+    
+        function calculate() {
+          try {
+            const result = eval(currentExpression);
+            resultElement.value = result;
+            currentExpression = '';
+          } catch (error) {
+            resultElement.value = 'Error';
+          }
+        }
+      </script>
+    </body>
+</html>
