@@ -1,25 +1,29 @@
-
-let outputScreen = document.getElementById('output-Screen');
-function display(num){
-    console.log(num,"numm");
-    console.log(outputScreen,"output")
-    outputScreen.value += num;
-}
-function calculate(){
-    try{
-    outputScreen.value=eval(outputScreen.value);
-}
-   catch(err)
-   {
-    alert("Invalid");
-   }
-
-}
-function clear(){
-    outputScreen.value="";
-
-}
-function del(){
-    outputScreen.value = outputscreen.Value.slice(0,-1);
-}
-
+let resultElement = document.getElementById('result');
+        let currentExpression = '';
+    
+        function display(number) {
+          currentExpression += number;
+          resultElement.value = currentExpression;
+        }
+    
+        
+    
+        function reset() {
+          console.log("RS");
+          currentExpression = '';
+          resultElement.value = '';
+         
+        }
+        function del(){
+            resultElement.value = resultElement.value.slice(0,-1);
+        }
+    
+        function calculate() {
+          try {
+            const result = eval(currentExpression);
+            resultElement.value = result;
+            currentExpression = '';
+          } catch (error) {
+            resultElement.value = 'Error';
+          }
+        }
